@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>beforeRunningCommand</key>
-	<string>saveActiveFile</string>
-	<key>command</key>
-	<string>#!/bin/sh
+#!/bin/bash
 
-opts="$TM_PANDOC_OPTS"
+PATH=$PATH:/usr/local/bin:/usr/local/texlive/2021basic/bin/universal-darwin:
+
+# you may need to change the PATH setting to point at your pandoc and Texlive binaries
+# for citation/bibliography functionality, your "$TM_PANDOC_BIB" set in textmate variables must point at your .bib file
+
 filename="$TM_FILEPATH"
 basename="${filename%.*}"
 if [ -f "$basename.tex" ]; then
@@ -16,20 +13,6 @@ fi
 if [ -f "$basename.pdf" ]; then
    cp "$basename.pdf" "$basename-old.pdf"
 fi
-echo "&lt;pre&gt;"
-pandoc $opts --bibliography="$TM_PANDOC_BIB" -o "$basename.pdf" &amp;&amp; open "$basename.pdf"
-echo "&lt;/pre&gt;"</string>
-	<key>input</key>
-	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>^~@p</string>
-	<key>name</key>
-	<string>Convert to PDF (citations)</string>
-	<key>output</key>
-	<string>showAsHTML</string>
-	<key>scope</key>
-	<string>text.html.markdown.pandoc</string>
-	<key>uuid</key>
-	<string>B6A43DBC-AC7B-40CF-B272-A841892E14CD</string>
-</dict>
-</plist>
+echo "<pre>"
+pandoc -f markdown --bibliography="$TM_PANDOC_BIB" --citeproc --pdf-engine=xelatex --mathjax -o "$basename.pdf" && open "$basename.pdf"
+echo "</pre>"
