@@ -1,15 +1,11 @@
 # Please note
 
-I've abandoned TextMate for MacVim, and stopped supporting this bundle. 
-If you want to take it over, let me know, and I'll add a link here to 
-your fork. 
-
-If you are thinking about moving to vim, you might like [vim-pandoc][], 
-a pandoc bundle for vim.
+Since David abandoned TextMate for MacVim, and stopped supporting this bundle, I have modified a few of the conversion commands to work with Pandoc 2.11 and above. Most of the functions that I have not changed work with earlier versions of Pandoc, or I do. not use and thus have not fiddled with. If you use Pandoc version prior to 2.11, please continue to use David's bundle. 
 
 # Pandoc TextMate Bundle README
 
 This is a TextMate bundle for use with John MacFarlane's [pandoc][].
+It is for use with Pandoc versions 2.11 and above.
 Pandoc is a command line tool that converts files from one markup format
 to another. It is a powerful tool that can be used in many ways for many
 purposes.
@@ -20,33 +16,11 @@ commands for converting existing documents into Pandoc's markdown format
 and commands for exporting documents written in Pandoc's markdown format
 to HTML, LaTeX, ConTeXt, PDF, and ODT.
 
-## This is a Work in Progress
-
-This bundle is a work in progress. It has many warts, and it is far from
-complete. It is idiosyncratic in ways that it shouldn't be. Some
-commands are probably broken. It makes use of hackish regexs when it
-should use [elegant haskell scripts][].
-
-I suspect anyone who uses Pandoc with Textmate will want a bundle
-tweaked to suit their own needs, and that many of us have already rolled
-our own sets of simple commands. I have two goals for this bundle, which
-aren't entirely compatible:
-
-1.  To provide a reasonable set of commands and options to help get new
-    users started.
-2.  To provide a way for users to share commands and options that
-    they've come up with.
-
-This probably means that the bundle should eventually be organized into
-"basic" and "advanced" sections.
-
-Fixes, forks, improvements, ideas, complete overhauls, all welcome.
-
 ## Highlights
 
 ### Citations
 
-Pandoc 1.8 added support for processing citations using hs-citeproc.
+Pandoc 2.11 continues support for processing citations but no longer needs you to call pandoc-citeproc.
 This bundle supports this: most conversion commands have a "(citations)"
 variant that will process ciations.
 
@@ -78,7 +52,7 @@ hard-wrapped lines. It also cleans up bullets and lists nicely.
 
 ### MultiMarkdown
 
-I've included a few commands for quickly converting some aspects of MMD
+David included a few commands for quickly converting some aspects of MMD
 syntax to Pandoc syntax. There are commands for converting MMD metadata
 to and from Pandoc Title Blocks. There is also a command for converting
 MMD formatted citations, like `[p. 20][#citekey]` to Pandoc formatted
@@ -87,7 +61,7 @@ citations, like `[@citekey, p. 20]`.
 ### Drag and Drop Conversions
 
 Open a new document in TextMate, set the language to Pandoc, drag a file
-onto it, and the bundle will try to convert it to Pandoc Markdown.
+onto it, and the bundle will try to convert it to Pandoc Markdown - **this may not work as I have not updated these commands.**
 
 Here are the details:
 
@@ -103,29 +77,18 @@ Here are the details:
 
 ## Language
 
-For the Language syntax, I shamelessly stole Fletcher Penney's
-[MultiMarkdown Bundle][], which is a slightly modified version of the
+For the Language syntax, Fletcher Penney's [MultiMarkdown Bundle][] is used, which is a slightly modified version of the
 syntax file from the original Markdown plugin. Since several of the MMD
-extensions are the same as the Pandoc extensions, this works okay. I've
-made a few changes, but I've lost track of what they were, and I've made
-no attempt to systematically change it to account for differences
-between Pandoc's extensions to Markdown and MMD's extensions to
-Markdown.
-
-I find that Fletcher Penney's [MultiMarkdown Theme][] works reasonably
-well with the modified language file.
-
-It would be better to have a clean and complete Language specification
-for Pandoc's extended Markdown. I just haven't bothered to do it.
+extensions are the same as the Pandoc extensions, this works okay.
 
 ## Scope
 
-I've scoped Pandoc as a flavor of markdown: text.html.markdown.pandoc.
+As a flavor of markdown: text.html.markdown.pandoc.
 So if you have a markdown bundle installed, those commands should also
 work in this bundle.
 
-I guess this makes sense for those who use markdown as an easy way to
-write HTML. I find I'm more likely to use it as an easy way to write
+This makes sense for those who use markdown as an easy way to
+write HTML, but is more likely to be used as an easy way to write
 LaTeX or ConTeXt, which suggests changing the scope to something like
 text.tex.markdown.pandoc, so as to inherit commands and syntax from the
 LaTeX bundle instead of the HTML bundle. Those with greater TextMate fu
@@ -151,18 +114,6 @@ Mac, this can take a *long* time. If you are using this on an older Mac,
 you might want to delete/comment out the line that says:
 
     open "$targetname"
-
-## Mellel
-
-I tried to come up with a command to convert Mellel files on drag and
-drop, but Mellel files are directories. If you drag a directory into a
-window, TextMate just prints the directory tree to the window. If you
-drag it to the TextMate icon, TextMate opens the directory as a project.
-So to convert Mellel files, try Malte Rosenau's [Mellel2MMD.app][]. In
-principle, it should be possible to modify Rosenau's mellel2mmd.xsl to
-produce Pandoc markdown, but in practice it is probably more sensible to
-convert Mellel files to MMD, and then convert the MMD to Pandoc
-Markdown.
 
   [vim-pandoc]: https://github.com/vim-pandoc/vim-pandoc%20The%20Pandoc.tmbundle%20won't%20be%20getting%20much%20love%20from%20me%20going%20forward.%20Since%20I'm%20not%20using%20it,%20I%20won't%20notice%20bugs%20and%20won't%20think%20of%20ways%20to%20improve%20it.%20I'm%20happy%20to%20pull%20in%20any%20bug%20fixes%20or%20improvements%20you%20might%20make.
   [pandoc]: http://johnmacfarlane.net/pandoc
