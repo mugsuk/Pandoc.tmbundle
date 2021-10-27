@@ -1,6 +1,6 @@
 # Please note
 
-Since David abandoned TextMate for MacVim, and stopped supporting this bundle, I have modified a few of the conversion commands to work with Pandoc 2.11 and above. Most of the functions that I have not changed work with earlier versions of Pandoc, or I do. not use and thus have not fiddled with. If you use Pandoc version prior to 2.11, please continue to use David's bundle. 
+Since David abandoned TextMate for MacVim, and stopped supporting this bundle, I have modified a few of the conversion commands to work with Pandoc 2.11 and above. Most of the functions that I have not changed work with earlier versions of Pandoc, or I do not use and thus have not fiddled with. If you use Pandoc version prior to 2.11, please continue to use David's bundle. 
 
 # Pandoc TextMate Bundle README
 
