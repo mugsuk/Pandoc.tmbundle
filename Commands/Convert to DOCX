@@ -1,0 +1,32 @@
+#!/bin/bash
+
+PATH=$PATH:/usr/local/bin:/usr/local/texlive/2021basic/bin/universal-darwin:
+
+# you may need to change the PATH setting to point at your pandoc and Texlive binaries
+# for citation/bibliography functionality, your "$TM_PANDOC_BIB" set in textmate variables must point at your .bib file
+
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] && . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+# $TM_FILEPATH: full path of current doc
+
+filename="${TM_FILEPATH}"
+basename="${filename%.*}"
+
+# Find a unique name
+
+inc=""
+connective=""
+if [ -e "$basename.docx" ]; then
+	connective="-"
+	inc=1
+	while [ -e "$basename$connective$inc.docx" ]; do
+		let "inc++"
+	done
+fi
+targetname="$basename$connective$inc.docx"
+
+# run pandoc
+
+echo "<pre>"
+	pandoc -f markdown --bibliography="$TM_PANDOC_BIB" --citeproc --mathjax -o "$basename.docx" && open "$basename.docx"
+echo "</pre>"
