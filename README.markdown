@@ -1,11 +1,11 @@
 # Please note
 
-Since David abandoned TextMate for MacVim, and stopped supporting this bundle, I have modified a few of the conversion commands to work with Pandoc 2.11 and above. Most of the functions that I have not changed work with earlier versions of Pandoc, or I do not use and thus have not fiddled with. If you use Pandoc version prior to 2.11, please continue to use David's bundle. 
+Since David abandoned TextMate for MacVim, and stopped supporting this bundle, I have modified a few of the conversion commands to work with Pandoc 2.19 and above. Most of the functions that I have not changed work with earlier versions of Pandoc, or I do not use and thus have not fiddled with. If you use Pandoc version prior to 2.19, please continue to use David's bundle. 
 
 # Pandoc TextMate Bundle README
 
 This is a TextMate bundle for use with John MacFarlane's [pandoc][].
-It is for use with Pandoc versions 2.11 and above.
+It is for use with Pandoc versions 2.19 and above.
 Pandoc is a command line tool that converts files from one markup format
 to another. It is a powerful tool that can be used in many ways for many
 purposes.
@@ -20,7 +20,7 @@ to HTML, LaTeX, ConTeXt, PDF, and ODT.
 
 ### Citations
 
-Pandoc 2.11 continues support for processing citations but no longer needs you to call pandoc-citeproc.
+Pandoc 2.19 continues support for processing citations but no longer needs you to call pandoc-citeproc.
 This bundle supports this: most conversion commands have a "(citations)"
 variant that will process ciations.
 
